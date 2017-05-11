@@ -14,7 +14,7 @@ class AnagramTestCase extends DrupalUnitTestCase
   {
     // Arrange Test Cases
     $testCases[] = ['cat is not an anagram of dog', 'cat', 'dog', false];
-    $testCases[] = ['Cat is not an anagram of Act', 'Cat', 'Act', true];
+    $testCases[] = ['Cat is an anagram of Act', 'Cat', 'Act', true];
 
     for ($testIndex = 0; $testIndex < count($testCases); $testIndex ++) {
       // Act
