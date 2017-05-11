@@ -29,7 +29,8 @@
   * This cloned folder is the `project` or `site` folder
   * The folder may be renamed at this point to your preference or convenience
   * Database, database user, site administrator and all passwords are `drupal`
-  * Site database is stored in sites/db-backup/ and needs to be imported into MAMP by opening `localhost:8888/phpmyadmin/`
+  * Using MAMP by opening `localhost:8888/phpmyadmin/`, first create a new database named `anagram` with collation `utf8_general_ci`.
+  * Site database is stored in sites/db-backup/ and needs to be imported into the `anagram` database.
   * You may need to recreate in MAMP SQL the `drupal` administrator database user and password
   * Set MAMP's Host Document Root folder to site folder, restart servers
   * Launch site by opening `localhost:8888/`
