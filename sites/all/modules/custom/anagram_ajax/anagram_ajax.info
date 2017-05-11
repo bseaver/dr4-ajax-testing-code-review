@@ -1,0 +1,5 @@
+name = Anagram Ajax View
+description = Display Favorite Anagrams with Ajax.
+package = Anagram Check
+core = 7.x
+files[] = anagram_ajax.module
