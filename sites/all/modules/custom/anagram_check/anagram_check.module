@@ -4,6 +4,12 @@
  * @file
  * Support Anagram checking
  */
+
+ /**
+  * Define our name space in $_SESSION
+  */
+define('ANAGRAM_CHECK', 'anagram_check');
+
 function anagram_check($possible_anagram, $word) {
   $possible_anagram = strtolower($possible_anagram);
   $word = strtolower($word);
@@ -33,7 +39,6 @@ function anagram_check_menu() {
   $items['anagram_success_page'] = array(
     'title' => t('The Answer!'),
     'page callback' => 'anagram_success',
-    'page arguments' => array('anagram_checker_form'),
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
@@ -64,5 +69,22 @@ function anagram_checker_form() {
 }
 
 function anagram_checker_form_submit($form, &$form_state) {
+  $possible_anagram = $form_state['values']['possible_anagram'];
+  $word = $form_state['values']['word'];
+  $result = anagram_check($possible_anagram, $word);
 
+  if ($result) {
+    $phrase = t('$1 is an anagram of $2.');
+  } else {
+    $phrase = t('$1 is not an anagram of $2.');
+  }
+
+  $phrase = str_replace(['$1', '$2'], [$possible_anagram, $word], $phrase);
+
+  $_SESSION[ANAGRAM_CHECK] = $phrase;
+  $form_state['redirect'] = 'anagram_success_page';
+}
+
+function anagram_success() {
+  return '<h3>' . $_SESSION[ANAGRAM_CHECK] . '</h3>';
 }
