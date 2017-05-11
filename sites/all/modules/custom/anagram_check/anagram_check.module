@@ -4,11 +4,10 @@
  * @file
  * Support Anagram checking
  */
-function anagram_check($possible_anagram, $word)
-{
+function anagram_check($possible_anagram, $word) {
   $possible_anagram = strtolower($possible_anagram);
   $word = strtolower($word);
-  
+
   $result = false;
   if ($word !== $possible_anagram) {
       $wordls = str_split($word);
@@ -18,6 +17,52 @@ function anagram_check($possible_anagram, $word)
         $result = true;
       }
   }
-
   return $result;
+}
+
+function anagram_check_menu() {
+  $items = array();
+  $items['anagram_checker'] = array(
+    'title' => t('Is This An Anagram?'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('anagram_checker_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['anagram_success_page'] = array(
+    'title' => t('The Answer!'),
+    'page callback' => 'anagram_success',
+    'page arguments' => array('anagram_checker_form'),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function anagram_checker_form() {
+  $form['word'] = array(
+    '#title' => t('Word To Check'),
+    '#type' => 'textfield',
+    '#description' => t('Please enter a word to check.'),
+    '#required' => TRUE,
+  );
+
+  $form['possible_anagram'] = array(
+    '#title' => t('Possible Anagram'),
+    '#type' => 'textfield',
+    '#description' => t('Please enter a possible anagram.'),
+    '#required' => TRUE,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+
+  return $form;
+}
+
+function anagram_checker_form_submit($form, &$form_state) {
+
 }
