@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Functional tests for the Anagram Checker module.
+ */
+class AnagramFunctionalTests extends DrupalWebTestCase {
+  /**
+   * Controls info displayed about our test in the Drupal Testing UI
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Anagram Checker Functional Tests',
+      'description' => 'Tests the Anagram Checker module.',
+      'group' => 'Anagram Tests',
+    );
+  }
+
+  public function setUp() {
+    parent::setUp(array('anagram_check'));
+  }
+
+  public function testAnagramCheckNavigation() {
+    $this->drupalGet('anagram_checker');
+    $this->assertText(t('Is This An Anagram?'), 'The text on the page is correct.');
+  }
+}

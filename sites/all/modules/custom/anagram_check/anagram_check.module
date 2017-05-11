@@ -62,7 +62,7 @@ function anagram_checker_form() {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => 'Submit',
+    '#value' => t('Check My Words!'),
   );
 
   return $form;

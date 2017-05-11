@@ -4,3 +4,4 @@ package = Anagram Check
 core = 7.x
 files[] = anagram_check.module
 files[] = tests/anagram_unit.test
+files[] = tests/anagram_functional.test
