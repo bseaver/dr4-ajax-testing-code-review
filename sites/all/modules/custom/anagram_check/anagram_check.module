@@ -1,0 +1,10 @@
+<?php
+
+/*
+ * @file
+ * Support Anagram checking
+ */
+function anagram_check($possible_anagram, $word)
+{
+  return false;
+}

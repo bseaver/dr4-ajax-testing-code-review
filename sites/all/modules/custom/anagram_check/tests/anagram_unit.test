@@ -1,0 +1,29 @@
+<?php
+class AnagramTestCase extends DrupalUnitTestCase
+{
+  public static function getInfo()
+  {
+    return array(
+      'name' => 'Anagram Unit Test',
+      'description' => 'Test that anagram_check recognizes an anagram',
+      'group' => 'Anagram Tests',
+    );
+  }
+
+  function testAnagramCheck()
+  {
+    // Arrange Test Cases
+    $testCases[] = ['cat is not an anagram of dog', 'cat', 'dog', false];
+    $testCases[] = ['Cat is not an anagram of Act', 'Cat', 'Act', true];
+
+    for ($testIndex = 0; $testIndex < count($testCases); $testIndex ++) {
+      // Act
+      $result = anagram_check($testCases[$testIndex][1], $testCases[$testIndex][2]);
+
+      // Assert
+      $expected_output = $testCases[$testIndex][3];
+      $this->assertEqual($result, $expected_output, $testCases[$testIndex][0]);
+    }
+  }
+
+}

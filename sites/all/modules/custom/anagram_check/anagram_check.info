@@ -1,0 +1,6 @@
+name = Anagram Check
+description = Determine if two words are anagrams
+package = Anagram Check
+core = 7.x
+files[] = anagram_check.module
+files[] = tests/anagram_unit.test
