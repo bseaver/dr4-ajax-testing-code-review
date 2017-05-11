@@ -6,5 +6,18 @@
  */
 function anagram_check($possible_anagram, $word)
 {
-  return false;
+  $possible_anagram = strtolower($possible_anagram);
+  $word = strtolower($word);
+  
+  $result = false;
+  if ($word !== $possible_anagram) {
+      $wordls = str_split($word);
+      $possls = str_split($possible_anagram);
+      $inter = array_intersect($wordls, $possls);
+      if ($inter === $wordls) {
+        $result = true;
+      }
+  }
+
+  return $result;
 }
